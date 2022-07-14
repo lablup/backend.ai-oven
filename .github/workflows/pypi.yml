@@ -27,4 +27,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Generate PyPI index.html
-          file_pattern: pypi/hash-lock.json pypi/index.html pypi/package/*.html pypi/simple/**/*.html
+          file_pattern: pypi/hash-lock.json pypi/index.html pypi/package/*.html pypi/simple/*.html pypi/simple/**/*.html
