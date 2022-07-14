@@ -18,14 +18,21 @@ jobs:
         uses: actions/setup-python@v4
       - name: Install Dependencies
         run: pip install -r requirements.txt
+      - name: Checkout repository with gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          path: pages-output
+          ref: gh-pages
       - name: Generate Index
         run: python scripts/generate_pypi.py
         env:
           REPOSITORY: lablup/backend.ai-oven
           BRANCH: main
+          HTML_DIRECTORY: pages-output/pypi
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: gh-pages
+          directory: pages-output
           commit_message: Generate PyPI index.html
           file_pattern: pypi/hash-lock.json pypi/index.html pypi/package/*.html pypi/simple/*.html pypi/simple/**/*.html
