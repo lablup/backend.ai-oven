@@ -1,0 +1,28 @@
+name: Generate PyPI Index
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate_index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Setup Python
+        uses: actions/setup-python@v4
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Generate Index
+        run: python scripts/generate_pypi.py
+        env:
+          REPOSITORY: lablup/backend.ai-oven
+          BRANCH: main
+      - name: Commit Changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Generate PyPI index.html
+          file_pattern: pypi/hash-lock.json pypi/index.html
