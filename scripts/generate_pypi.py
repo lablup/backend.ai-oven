@@ -54,7 +54,7 @@ def main():
     simple_output: MutableMapping[str, MutableMapping[str, str]] = {}
     hash_cache: MutableMapping[str, str] = {}
     if (output_directory / 'hash-lock.json').exists():
-        with open(entrypoint / 'hash-lock.json', 'r') as fr:
+        with open(output_directory / 'hash-lock.json', 'r') as fr:
             hash_cache = json.loads(fr.read())
 
     if len(projects) == 0:
