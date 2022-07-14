@@ -6,6 +6,7 @@ import sys
 import textwrap
 from typing import Mapping, MutableMapping
 from bs4 import BeautifulSoup as BSoup
+import requests
 
 REPOSITORY = os.environ['REPOSITORY']
 BRANCH = os.environ.get('BRANCH', 'main')
@@ -22,6 +23,11 @@ BASE_HTML = textwrap.dedent('''
         </body>
     </html>
 ''')
+
+
+def get_actual_url(start: str) -> str:
+    resp = requests.get(start)
+    return resp.url
 
 
 def generate_html(meta: Mapping[str, str], outpath: Path, name: str = 'package') -> None:
@@ -74,10 +80,10 @@ def main():
                 with open(wheel, 'rb') as fr:
                     hash = hashlib.sha256(fr.read()).hexdigest()
                 hash_cache[f'{project.name}:{wheel.name}'] = hash
-            url = (
-                f'https://media.githubusercontent.com/media/{REPOSITORY}/{BRANCH}'
-                f'/pypi/projects/{project.name}/{wheel.name}#sha256={hash}'
-            )
+            url = get_actual_url(
+                f'https://github.com/{REPOSITORY}/raw/{BRANCH}/pypi/projects'
+                f'/{project.name}/{wheel.name}?raw=true'
+            ) + f'#sha256={hash}'
             package_output[wheel.name] = url
             simple_output[project.name][wheel.name] = url
 
