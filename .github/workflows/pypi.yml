@@ -8,10 +8,12 @@ jobs:
   generate_index:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Git repository
+      - name: Checkout GitHub Repo (+ download lfs dependencies)
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          lfs: true
+      - name: Checkout LFS objects
+        run: git lfs checkout
       - name: Setup Python
         uses: actions/setup-python@v4
       - name: Install Dependencies
