@@ -69,7 +69,10 @@ def main():
                 with open(wheel, 'rb') as fr:
                     hash = hashlib.sha256(fr.read()).hexdigest()
                 hash_cache[f'{project.name}:{wheel.name}'] = hash
-            url = f'https://media.githubusercontent.com/media/{REPOSITORY}/{BRANCH}/pypi/{wheel}#sha256={hash}'
+            url = (
+                f'https://media.githubusercontent.com/media/{REPOSITORY}/{BRANCH}'
+                f'/pypi/projects/{project.name}/{wheel.name}#sha256={hash}'
+            )
             package_output[wheel.name] = url
             simple_output[project.name][wheel.name] = url
 
