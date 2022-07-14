@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup as BSoup
 
 REPOSITORY = os.environ['REPOSITORY']
 BRANCH = os.environ.get('BRANCH', 'main')
-HTML_DIRECTORY = os.environ.get('HTML_DIRECTORY')
+OUTPUT_DIRECTORY = os.environ.get('OUTPUT_DIRECTORY')
 
 BASE_HTML = textwrap.dedent('''
     <!DOCTYPE html>
@@ -45,15 +45,15 @@ def create_simple_repository(meta: Mapping[str, Mapping[str, str]], outdir: Path
 def main():
 
     entrypoint = Path('pypi')
-    if HTML_DIRECTORY is not None:
-        html_directory = Path(HTML_DIRECTORY)
+    if OUTPUT_DIRECTORY is not None:
+        output_directory = Path(OUTPUT_DIRECTORY)
     else:
-        html_directory = entrypoint
+        output_directory = entrypoint
     projects = list((entrypoint / 'projects').iterdir())
     package_output: MutableMapping[str, str] = {}
     simple_output: MutableMapping[str, MutableMapping[str, str]] = {}
     hash_cache: MutableMapping[str, str] = {}
-    if (entrypoint / 'hash-lock.json').exists():
+    if (output_directory / 'hash-lock.json').exists():
         with open(entrypoint / 'hash-lock.json', 'r') as fr:
             hash_cache = json.loads(fr.read())
 
@@ -81,13 +81,13 @@ def main():
             package_output[wheel.name] = url
             simple_output[project.name][wheel.name] = url
 
-    generate_html({'simple': 'simple/', 'package': 'package/'}, html_directory / 'index.html', name='pypi')
-    (html_directory / 'package').mkdir(parents=True, exist_ok=True)
-    (html_directory / 'simple').mkdir(parents=True, exist_ok=True)
-    generate_html(package_output, html_directory / 'package' / 'index.html')
-    create_simple_repository(simple_output, html_directory / 'simple')
+    generate_html({'simple': 'simple/', 'package': 'package/'}, output_directory / 'index.html', name='pypi')
+    (output_directory / 'package').mkdir(parents=True, exist_ok=True)
+    (output_directory / 'simple').mkdir(parents=True, exist_ok=True)
+    generate_html(package_output, output_directory / 'package' / 'index.html')
+    create_simple_repository(simple_output, output_directory / 'simple')
 
-    with open(entrypoint / 'hash-lock.json', 'w') as fw:
+    with open(output_directory / 'hash-lock.json', 'w') as fw:
         fw.write(json.dumps(hash_cache, ensure_ascii=False, indent=4))
 
 
