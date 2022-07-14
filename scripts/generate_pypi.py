@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup as BSoup
 
 REPOSITORY = os.environ['REPOSITORY']
 BRANCH = os.environ.get('BRANCH', 'main')
+HTML_DIRECTORY = os.environ.get('HTML_DIRECTORY')
 
 BASE_HTML = textwrap.dedent('''
     <!DOCTYPE html>
@@ -44,6 +45,10 @@ def create_simple_repository(meta: Mapping[str, Mapping[str, str]], outdir: Path
 def main():
 
     entrypoint = Path('pypi')
+    if HTML_DIRECTORY is not None:
+        html_directory = Path(HTML_DIRECTORY)
+    else:
+        html_directory = entrypoint
     projects = list((entrypoint / 'projects').iterdir())
     package_output: MutableMapping[str, str] = {}
     simple_output: MutableMapping[str, MutableMapping[str, str]] = {}
@@ -69,15 +74,19 @@ def main():
                 with open(wheel, 'rb') as fr:
                     hash = hashlib.sha256(fr.read()).hexdigest()
                 hash_cache[f'{project.name}:{wheel.name}'] = hash
-            url = f'https://media.githubusercontent.com/media/{REPOSITORY}/{BRANCH}/pypi/{wheel}#sha256={hash}'
+            url = (
+                f'https://media.githubusercontent.com/media/{REPOSITORY}/{BRANCH}'
+                f'/pypi/projects/{project.name}/{wheel.name}#sha256={hash}'
+            )
             package_output[wheel.name] = url
             simple_output[project.name][wheel.name] = url
 
-    generate_html({'simple': 'simple/', 'package': 'package/'}, entrypoint / 'index.html', name='pypi')
-    (entrypoint / 'package').mkdir(parents=True, exist_ok=True)
-    (entrypoint / 'simple').mkdir(parents=True, exist_ok=True)
-    generate_html(package_output, entrypoint / 'package' / 'index.html')
-    create_simple_repository(simple_output, entrypoint / 'simple')
+    generate_html({'simple': 'simple/', 'package': 'package/'}, html_directory / 'index.html', name='pypi')
+    (html_directory / 'package').mkdir(parents=True, exist_ok=True)
+    (html_directory / 'simple').mkdir(parents=True, exist_ok=True)
+    generate_html(package_output, html_directory / 'package' / 'index.html')
+    create_simple_repository(simple_output, html_directory / 'simple')
+
     with open(entrypoint / 'hash-lock.json', 'w') as fw:
         fw.write(json.dumps(hash_cache, ensure_ascii=False, indent=4))
 
