@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 origpath=$(pwd)
-VERSION=${VERSION:-1.47.0}
+VERSION=${VERSION:-1.48.0}
 pyenv virtualenv 3.10.5 tmp-grpcio-build
 cd $(mktemp -d)
 pyenv local tmp-grpcio-build
