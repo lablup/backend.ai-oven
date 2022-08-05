@@ -2,7 +2,8 @@
 set -e
 export CFLAGS=-std=c99
 origpath=$(pwd)
-VERSION=${VERSION:-2.0.0}
+VERSION=${VERSION:-1.1.0}
+mkdir $origpath/$VERSION
 pyenv virtualenv 3.10.5 tmp-hiredis-build
 cd $(mktemp -d)
 pyenv local tmp-hiredis-build
@@ -19,5 +20,5 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 set -e
-cp ./wheelhouse/hiredis*.whl $origpath
+cp ./wheelhouse/hiredis*.whl $origpath/$VERSION
 pyenv uninstall -f tmp-hiredis-build
