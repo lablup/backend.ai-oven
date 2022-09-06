@@ -13,5 +13,6 @@
     "hiredis:hiredis-1.1.0-cp310-cp310-linux_x86_64.whl": "8777703e8e1d54bcc1e30294104f626d66b30a8e32ee8c79d3587ff92f9c87fc",
     "hiredis:hiredis-1.1.0-cp310-cp310-macosx_12_0_arm64.whl": "5b4bdda35b40105b4ee3c87c72393496bec5e7f333befdcdd623511bf2684307",
     "psycopg-binary:psycopg_binary-3.1-cp310-cp310-macosx_12_0_arm64.whl": "8940a4b86de50694d12260fa6769371d81b12c35bd73ba8edf93688f96a19918",
-    "psycopg-binary:psycopg_binary-3.1-cp310-cp310-macosx_11_0_arm64.whl": "dccd2d5860f23da8c06189bc2bf764f2aaeca87e38ee0892a04e2060f16314dc"
+    "psycopg-binary:psycopg_binary-3.1-cp310-cp310-macosx_11_0_arm64.whl": "dccd2d5860f23da8c06189bc2bf764f2aaeca87e38ee0892a04e2060f16314dc",
+    "psycopg-binary:psycopg_binary-3.1.1-cp310-cp310-macosx_11_0_arm64.whl": "fef6d425df15e8bc47832183db8c2d065761285fb2a819a5c2ecc110e49cb18f"
 }
