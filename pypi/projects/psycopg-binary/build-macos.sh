@@ -11,8 +11,8 @@ set -e
 
 origpath="$(pwd)"
 tmppath="$(mktemp -d)"
-VERSION=${VERSION:-3.1.0}
-VERSION_TAG=${VERSION_TAG:-3.1}
+VERSION=${VERSION:-3.1.1}
+VERSION_TAG=${VERSION_TAG:-3.1.1}
 # Python **MUST** be installed from the official package downloaded from:
 # https://www.python.org/downloads/
 # inside the /usr/local/bin directory.
