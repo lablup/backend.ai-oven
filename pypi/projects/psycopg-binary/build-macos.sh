@@ -3,7 +3,7 @@
 cleanup() {
   pyenv uninstall -f "${VENV_BUILD}"
   rm -rf "$tmppath"
-  rm -rf "$origpath/$VERSION"
+  rm -rf "$origpath/$VERSION_TAG"
   cd "$origpath"
 }
 
@@ -11,7 +11,6 @@ set -e
 
 origpath="$(pwd)"
 tmppath="$(mktemp -d)"
-VERSION=${VERSION:-3.1.1}
 VERSION_TAG=${VERSION_TAG:-3.1.1}
 # Python **MUST** be installed from the official package downloaded from:
 # https://www.python.org/downloads/
@@ -20,7 +19,7 @@ VERSION_TAG=${VERSION_TAG:-3.1.1}
 PYTHON_VERSION=${PYTHON_VERSION:3.10.7}
 VENV_BUILD="tmp-psycopg-binary-build"
 
-mkdir -p "$origpath/${VERSION}"
+mkdir -p "$origpath/${VERSION_TAG}"
 pyenv virtualenv -f ${PYTHON_VERSION} ${VENV_BUILD}
 trap cleanup EXIT
 
