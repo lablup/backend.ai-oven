@@ -1,40 +1,62 @@
 #!/bin/sh
+cleanup() {
+    pyenv uninstall -f "${VENV_BUILD}"
+    rm -rf "$tmppath"
+}
 set -e
-export CIBW_BUILD_FRONTEND=pip
-export CIBW_ENVIRONMENT_MACOS="GRPC_PYTHON_BUILD_WITH_CYTHON=1"
-export CIBW_BEFORE_BUILD="pip install -r requirements.txt"
 
-origpath=$(pwd)
-VERSION=${VERSION:-1.48.1}
-PYTHON_VERSION=${PYTHON_VERSION:-3.10.5}
-pyenv virtualenv $PYTHON_VERSION tmp-grpcio-build
-cd $(mktemp -d)
-pyenv local tmp-grpcio-build
+VERSION=${VERSION:-1.48.1}  # target grpcio version
+PYTHON_VERSION=${PYTHON_VERSION:-3.10.5}   # Python version to install and run cibuildwheel
+VENV_BUILD=${VENV_BUILD:-tmp-grpcio-build} # PyEnv virtualenv name to install cibuildwheel
+
+origpath="$(pwd)"
+tmppath="$(mktemp -d)"
+target_architectures="arm64 x86_64"
+build_target_python_versions="cp39 cp310"
+
+pyenv virtualenv "${PYTHON_VERSION}" "${VENV_BUILD}"
+trap cleanup EXIT
+cd "${tmppath}"
+pyenv local "${VENV_BUILD}"
 pip install -U pip setuptools wheel cibuildwheel
 set +e
-pip download --no-binary grpcio grpcio
-tar xf *.tar.gz
-cd grpcio-*/
+pip download --no-binary grpcio --no-binary grpcio-tools  "grpcio==${VERSION}" "grpcio-tools==${VERSION}"
+ls -al
+tar xf "grpcio-${VERSION}.tar.gz"
+tar xf "grpcio-tools-${VERSION}.tar.gz"
 
-for pyver in "cp38" "cp39" "cp310"; do
-    for arch in "arm64" "x86_64"; do
+for pyver in $build_target_python_versions; do
+    for arch in $target_architectures; do
+        cd "grpcio-tools-${VERSION}"
+        echo "building grpcio-tools wheel for ${pyver}-macosx_${arch}"
+        CIBW_BUILD_FRONTEND=pip \
+        CIBW_ENVIRONMENT_MACOS="GRPC_PYTHON_BUILD_WITH_CYTHON=1" \
+        CIBW_BEFORE_BUILD="pip install Cython" \
         CIBW_ARCHS_MACOS="${arch}" \
         CIBW_TEST_SKIP="*_${arch}" \
         CIBW_BUILD="${pyver}-macosx_${arch}" \
-            cibuildwheel --output-dir ../wheelhouse
+            cibuildwheel --platform macos --output-dir ../wheelhouse .
         if [ $? -ne 0 ]; then
-            pyenv uninstall -f tmp-grpcio-build
-            echo "Meh, looks like the build has failed. Sadly, nobody has yet figured out why this fails. But here are some workarounds:"
-            echo "    1) unset LDFLAGS CFLAGS CPPFLAGS PKG_CONFIG_PATH"
-            echo "    2) export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=true GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true"
-            echo "    3) export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=false GRPC_PYTHON_BUILD_SYSTEM_ZLIB=false"
-            echo "Try building again with one of the options above applied."
-            echo "If it still fails, then try combining the options (1-2, 2-3, 1-3, 1-2-3, ...)."
-            echo "If none of these works, then sorry. You're out of luck. :("
             exit $?
         fi
+        cd "../grpcio-${VERSION}"
+        echo "building grpcio wheel for ${pyver}-macosx_${arch}"
+        CIBW_BUILD_FRONTEND=pip \
+        CIBW_ENVIRONMENT_MACOS="GRPC_PYTHON_BUILD_WITH_CYTHON=1" \
+        CIBW_BEFORE_BUILD="pip install -r requirements.txt" \
+        CIBW_ARCHS_MACOS="${arch}" \
+        CIBW_TEST_SKIP="*_${arch}" \
+        CIBW_BUILD="${pyver}-macosx_${arch}" \
+            cibuildwheel --platform macos --output-dir ../wheelhouse .
+        if [ $? -ne 0 ]; then
+            exit $?
+        fi
+        cd ..
     done
 done
+
 set -e
-cp ./wheelhouse/grpcio*.whl $origpath
-pyenv uninstall -f tmp-grpcio-build
+cp wheelhouse/grpcio*.whl "$origpath"
+pyenv uninstall -f "${VENV_BUILD}"
+cd "$origpath"
+mv grpcio_tools* ../grpcio-tools
