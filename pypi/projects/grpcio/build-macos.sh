@@ -3,7 +3,6 @@ cleanup() {
     pyenv uninstall -f "${VENV_BUILD}"
     rm -rf "$tmppath"
 }
-set -e
 
 VERSION=${VERSION:-1.48.1}  # target grpcio version
 PYTHON_VERSION=${PYTHON_VERSION:-3.10.5}   # Python version to install and run cibuildwheel
@@ -12,7 +11,18 @@ VENV_BUILD=${VENV_BUILD:-tmp-grpcio-build} # PyEnv virtualenv name to install ci
 origpath="$(pwd)"
 tmppath="$(mktemp -d)"
 target_architectures="arm64 x86_64"
-build_target_python_versions="cp39 cp310"
+build_target_python_versions="3.9 3.10"
+
+for pyver in $build_target_python_versions; do
+    pkgutil --pkgs | grep "PythonFramework-${pyver}" > /dev/null
+    if [ $? -ne 0 ]; then
+        echo "System-wide installation of Python ${pyver} not found."
+        echo "Please download and install one from https://www.python.org/downloads/macos/"
+        exit 1
+    fi
+done
+
+set -e
 
 pyenv virtualenv "${PYTHON_VERSION}" "${VENV_BUILD}"
 trap cleanup EXIT
@@ -27,26 +37,27 @@ tar xf "grpcio-tools-${VERSION}.tar.gz"
 
 for pyver in $build_target_python_versions; do
     for arch in $target_architectures; do
+        build_target="cp${echo $pyver | sed 's/.//'}-macosx_${arch}"
         cd "grpcio-tools-${VERSION}"
-        echo "building grpcio-tools wheel for ${pyver}-macosx_${arch}"
+        echo "building grpcio-tools wheel for ${build_target}"
         CIBW_BUILD_FRONTEND=pip \
         CIBW_ENVIRONMENT_MACOS="GRPC_PYTHON_BUILD_WITH_CYTHON=1" \
         CIBW_BEFORE_BUILD="pip install Cython" \
         CIBW_ARCHS_MACOS="${arch}" \
         CIBW_TEST_SKIP="*_${arch}" \
-        CIBW_BUILD="${pyver}-macosx_${arch}" \
+        CIBW_BUILD="${build_target}" \
             cibuildwheel --platform macos --output-dir ../wheelhouse .
         if [ $? -ne 0 ]; then
             exit $?
         fi
         cd "../grpcio-${VERSION}"
-        echo "building grpcio wheel for ${pyver}-macosx_${arch}"
+        echo "building grpcio wheel for ${build_target}"
         CIBW_BUILD_FRONTEND=pip \
         CIBW_ENVIRONMENT_MACOS="GRPC_PYTHON_BUILD_WITH_CYTHON=1" \
         CIBW_BEFORE_BUILD="pip install -r requirements.txt" \
         CIBW_ARCHS_MACOS="${arch}" \
         CIBW_TEST_SKIP="*_${arch}" \
-        CIBW_BUILD="${pyver}-macosx_${arch}" \
+        CIBW_BUILD="${build_target}" \
             cibuildwheel --platform macos --output-dir ../wheelhouse .
         if [ $? -ne 0 ]; then
             exit $?
