@@ -11,6 +11,7 @@ VENV_BUILD=${VENV_BUILD:-tmp-grpcio-build} # PyEnv virtualenv name to install ci
 origpath="$(pwd)"
 tmppath="$(mktemp -d)"
 target_architectures="arm64 x86_64"
+# System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
 build_target_python_versions="3.9 3.10"
 
 for pyver in $build_target_python_versions; do
