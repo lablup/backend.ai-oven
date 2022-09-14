@@ -38,7 +38,7 @@ tar xf "grpcio-tools-${VERSION}.tar.gz"
 
 for pyver in $build_target_python_versions; do
     for arch in $target_architectures; do
-        build_target="cp$(echo $pyver | sed 's/.//')-macosx_${arch}"
+        build_target="cp$(echo $pyver | sed 's/\.//')-macosx_${arch}"
         cd "grpcio-tools-${VERSION}"
         echo "building grpcio-tools wheel for ${build_target}"
         CIBW_BUILD_FRONTEND=pip \
