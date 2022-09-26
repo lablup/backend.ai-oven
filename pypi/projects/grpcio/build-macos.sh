@@ -1,20 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 cleanup() {
-    pyenv uninstall -f "${VENV_BUILD}"
     rm -rf "$tmppath"
 }
 
-VERSION=${VERSION:-1.48.1}  # target grpcio version
-PYTHON_VERSION=${PYTHON_VERSION:-3.10.5}   # Python version to install and run cibuildwheel
-VENV_BUILD=${VENV_BUILD:-tmp-grpcio-build} # PyEnv virtualenv name to install cibuildwheel
+VERSION=${VERSION:-1.48.2}  # target grpcio version
+TARGET_PYVER=${TARGET_PYVER:-3.9 3.10}  # target python version
+TARGET_ARCH=${TARGET_ARCH:-arm64 x86_64}  # target architecture
 
-origpath="$(pwd)"
+root_dir="$(cd $(dirname $(readlink -f $0))/../../.. && pwd)"
 tmppath="$(mktemp -d)"
-target_architectures="arm64 x86_64"
-# System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
-build_target_python_versions="3.9 3.10"
 
-for pyver in $build_target_python_versions; do
+# System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
+for pyver in $TARGET_PYVER; do
     pkgutil --pkgs | grep "PythonFramework-${pyver}" > /dev/null
     if [ $? -ne 0 ]; then
         echo "System-wide installation of Python ${pyver} not found."
@@ -23,12 +20,18 @@ for pyver in $build_target_python_versions; do
     fi
 done
 
+read -ra version_arr <<<"$TARGET_PYVER"
+venv_python_version=${version_arr[0]}
+venv_python="python${venv_python_version}"
+echo "using ${venv_python} as cibuildwheel python"
+
 set -e
 
-pyenv virtualenv "${PYTHON_VERSION}" "${VENV_BUILD}"
 trap cleanup EXIT
 cd "${tmppath}"
-pyenv local "${VENV_BUILD}"
+$venv_python -m venv "venv-build"
+source "venv-build/bin/activate"
+
 pip install -U pip setuptools wheel cibuildwheel
 set +e
 pip download --no-binary grpcio --no-binary grpcio-tools  "grpcio==${VERSION}" "grpcio-tools==${VERSION}"
@@ -36,8 +39,8 @@ ls -al
 tar xf "grpcio-${VERSION}.tar.gz"
 tar xf "grpcio-tools-${VERSION}.tar.gz"
 
-for pyver in $build_target_python_versions; do
-    for arch in $target_architectures; do
+for pyver in $TARGET_PYVER; do
+    for arch in $TARGET_ARCH; do
         build_target="cp$(echo $pyver | sed 's/\.//')-macosx_${arch}"
         cd "grpcio-tools-${VERSION}"
         echo "building grpcio-tools wheel for ${build_target}"
@@ -68,7 +71,7 @@ for pyver in $build_target_python_versions; do
 done
 
 set -e
-cp wheelhouse/grpcio*.whl "$origpath"
-pyenv uninstall -f "${VENV_BUILD}"
-cd "$origpath"
-mv grpcio_tools* ../grpcio-tools
+cp wheelhouse/grpcio-*.whl "${root_dir}/pypi/projects/grpcio"
+cp wheelhouse/grpcio_tools-*.whl "${root_dir}/pypi/projects/grpcio-tools"
+
+cleanup
