@@ -7,7 +7,6 @@ VERSION=${VERSION:-1.48.2}  # target grpcio version
 TARGET_PYVER=${TARGET_PYVER:-3.9 3.10}  # target python version
 TARGET_ARCH=${TARGET_ARCH:-arm64 x86_64}  # target architecture
 
-root_dir="$(cd $(dirname $(readlink -f $0))/../../.. && pwd)"
 tmppath="$(mktemp -d)"
 
 # System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
@@ -24,6 +23,9 @@ read -ra version_arr <<<"$TARGET_PYVER"
 venv_python_version=${version_arr[0]}
 venv_python="python${venv_python_version}"
 echo "using ${venv_python} as cibuildwheel python"
+
+realpath_script="import os,sys;print(os.path.realpath('$0/../../../..'))"
+root_dir="$(${venv_python} -c "${realpath_script}")"
 
 set -e
 
