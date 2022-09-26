@@ -1,16 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 cleanup() {
     rm -rf "$tmppath"
 }
 
 VERSION=${VERSION:-1.48.2}  # target grpcio version
+TARGET_PYVER=${TARGET_PYVER:-3.9 3.10}  # target python version
+TARGET_ARCH=${TARGET_ARCH:-arm64 x86_64}  # target architecture
 
 root_dir="$(cd $(dirname $(readlink -f $0))/../../.. && pwd)"
 tmppath="$(mktemp -d)"
-target_architectures="arm64 x86_64"
-# System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
 
-for pyver in $build_target_python_versions; do
+# System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
+for pyver in $TARGET_PYVER; do
     pkgutil --pkgs | grep "PythonFramework-${pyver}" > /dev/null
     if [ $? -ne 0 ]; then
         echo "System-wide installation of Python ${pyver} not found."
@@ -19,10 +20,10 @@ for pyver in $build_target_python_versions; do
     fi
 done
 
-build_target_python_versions="3.9 3.10"
-read -ra version_arr <<<"$var"
+read -ra version_arr <<<"$TARGET_PYVER"
 venv_python_version=${version_arr[0]}
 venv_python="python${venv_python_version}"
+echo "using ${venv_python} as cibuildwheel python"
 
 set -e
 
@@ -38,8 +39,8 @@ ls -al
 tar xf "grpcio-${VERSION}.tar.gz"
 tar xf "grpcio-tools-${VERSION}.tar.gz"
 
-for pyver in $build_target_python_versions; do
-    for arch in $target_architectures; do
+for pyver in $TARGET_PYVER; do
+    for arch in $TARGET_ARCH; do
         build_target="cp$(echo $pyver | sed 's/\.//')-macosx_${arch}"
         cd "grpcio-tools-${VERSION}"
         echo "building grpcio-tools wheel for ${build_target}"
