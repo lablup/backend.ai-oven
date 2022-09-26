@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_grpcio:
-    runs-on: [self-hosted, macOS, ARM64]
+    runs-on: macos-latest
     steps:
       - name: Checkout GitHub Repo
         uses: actions/checkout@v3
