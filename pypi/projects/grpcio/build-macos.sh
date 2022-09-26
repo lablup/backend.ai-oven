@@ -1,18 +1,14 @@
 #!/bin/sh
 cleanup() {
-    pyenv uninstall -f "${VENV_BUILD}"
     rm -rf "$tmppath"
 }
 
 VERSION=${VERSION:-1.48.2}  # target grpcio version
-PYTHON_VERSION=${PYTHON_VERSION:-3.10.5}   # Python version to install and run cibuildwheel
-VENV_BUILD=${VENV_BUILD:-tmp-grpcio-build} # PyEnv virtualenv name to install cibuildwheel
 
-root_dir="$(cd $(dirname $(readlink -f $1)/../../.. && pwd))"
+root_dir="$(cd $(dirname $(readlink -f $0))/../../.. && pwd)"
 tmppath="$(mktemp -d)"
 target_architectures="arm64 x86_64"
 # System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
-build_target_python_versions="3.9 3.10"
 
 for pyver in $build_target_python_versions; do
     pkgutil --pkgs | grep "PythonFramework-${pyver}" > /dev/null
@@ -23,12 +19,18 @@ for pyver in $build_target_python_versions; do
     fi
 done
 
+build_target_python_versions="3.9 3.10"
+read -ra version_arr <<<"$var"
+venv_python_version=${version_arr[0]}
+venv_python="python${venv_python_version}"
+
 set -e
 
-pyenv virtualenv "${PYTHON_VERSION}" "${VENV_BUILD}"
 trap cleanup EXIT
 cd "${tmppath}"
-pyenv local "${VENV_BUILD}"
+$venv_python -m venv "venv-build"
+source "venv-build/bin/activate"
+
 pip install -U pip setuptools wheel cibuildwheel
 set +e
 pip download --no-binary grpcio --no-binary grpcio-tools  "grpcio==${VERSION}" "grpcio-tools==${VERSION}"
@@ -70,4 +72,5 @@ done
 set -e
 cp wheelhouse/grpcio-*.whl "${root_dir}/pypi/projects/grpcio"
 cp wheelhouse/grpcio_tools-*.whl "${root_dir}/pypi/projects/grpcio-tools"
-pyenv uninstall -f "${VENV_BUILD}"
+
+cleanup
