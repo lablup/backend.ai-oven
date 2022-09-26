@@ -4,11 +4,11 @@ cleanup() {
     rm -rf "$tmppath"
 }
 
-VERSION=${VERSION:-1.48.1}  # target grpcio version
+VERSION=${VERSION:-1.48.2}  # target grpcio version
 PYTHON_VERSION=${PYTHON_VERSION:-3.10.5}   # Python version to install and run cibuildwheel
 VENV_BUILD=${VENV_BUILD:-tmp-grpcio-build} # PyEnv virtualenv name to install cibuildwheel
 
-origpath="$(pwd)"
+root_dir="$(cd $(dirname $(readlink -f $1)/../../.. && pwd))"
 tmppath="$(mktemp -d)"
 target_architectures="arm64 x86_64"
 # System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
@@ -68,7 +68,6 @@ for pyver in $build_target_python_versions; do
 done
 
 set -e
-cp wheelhouse/grpcio*.whl "$origpath"
+cp wheelhouse/grpcio-*.whl "${root_dir}/pypi/projects/grpcio"
+cp wheelhouse/grpcio_tools-*.whl "${root_dir}/pypi/projects/grpcio-tools"
 pyenv uninstall -f "${VENV_BUILD}"
-cd "$origpath"
-mv grpcio_tools* ../grpcio-tools
