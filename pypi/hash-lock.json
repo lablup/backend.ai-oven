@@ -22,5 +22,13 @@
     "grpcio:grpcio-1.48.1-cp310-cp310-macosx_10_10_x86_64.whl": "87797a7086e36ad7e00f5cd270bfc68ac7cf9aa6403f64b1f7b8791a7583c672",
     "grpcio:grpcio-1.48.1-cp310-cp310-macosx_11_0_arm64.whl": "4dfe61f7512724fde944710f0ce5e595841fdc47afd9cbb02750f4d33d5872ec",
     "grpcio:grpcio-1.48.1-cp39-cp39-macosx_11_0_arm64.whl": "12b8202c9872f52aa0adec4aa08690510733d38e3b167f2d18defca9d270c2cc",
-    "grpcio:grpcio-1.48.1-cp39-cp39-macosx_10_10_x86_64.whl": "893c5e6489e1a876831836f0b7b3651d99bd3fe476f6d192567fa0e235bbf4c1"
+    "grpcio:grpcio-1.48.1-cp39-cp39-macosx_10_10_x86_64.whl": "893c5e6489e1a876831836f0b7b3651d99bd3fe476f6d192567fa0e235bbf4c1",
+    "grpcio-tools:grpcio_tools-1.48.2-cp310-cp310-macosx_11_0_arm64.whl": "ec1ffe597f8c1df0d7165e69a9a85dd298711d50ca1458315ffb4e37a41d7bc7",
+    "grpcio-tools:grpcio_tools-1.48.2-cp310-cp310-macosx_10_10_x86_64.whl": "4ee7ccbc738dcb59aee15fe07ae117f0f84bf544af9685333946005aa902661e",
+    "grpcio-tools:grpcio_tools-1.48.2-cp39-cp39-macosx_11_0_arm64.whl": "9678b27e230e36e568e2c6de9379b0262076abcd66609f8165396040eaeff60c",
+    "grpcio-tools:grpcio_tools-1.48.2-cp39-cp39-macosx_10_10_x86_64.whl": "62df2a9c08edee2c3374cb3623e409c7a3752b9d51b4436e0d58ffbe1b5d0932",
+    "grpcio:grpcio-1.48.2-cp39-cp39-macosx_11_0_arm64.whl": "b33724b7ed169159454209653f22c09522349df663d8aa94eebcdc387f14ecbd",
+    "grpcio:grpcio-1.48.2-cp39-cp39-macosx_10_10_x86_64.whl": "0bddb6b90089bfbf92563a03c02629fe880ae36b1fb2acc3a2ef64befe705e06",
+    "grpcio:grpcio-1.48.2-cp310-cp310-macosx_10_10_x86_64.whl": "1b8c3aa0f9f6ac44110a982bc21b9b2447fc5419eff2b6e4042357c6c426c3fb",
+    "grpcio:grpcio-1.48.2-cp310-cp310-macosx_11_0_arm64.whl": "5b117b3c76bf0f41c061b0008dde0bd279b9a7a733e35784ca22e962e38b4a13"
 }
