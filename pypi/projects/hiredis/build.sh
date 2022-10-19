@@ -4,7 +4,7 @@ export CFLAGS=-std=c99
 origpath=$(pwd)
 VERSION=${VERSION:-1.1.0}
 mkdir -p $origpath/$VERSION
-pyenv virtualenv 3.10.5 tmp-hiredis-build
+pyenv virtualenv 3.10.8 tmp-hiredis-build
 cd $(mktemp -d)
 pyenv local tmp-hiredis-build
 pip install -U pip setuptools wheel
