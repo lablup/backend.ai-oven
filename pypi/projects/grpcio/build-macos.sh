@@ -9,7 +9,7 @@ TARGET_ARCH=${TARGET_ARCH:-arm64 x86_64}  # target architecture
 
 tmppath="$(mktemp -d)"
 
-# System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, ...).
+# System-wide installtion of python is required for every minor release (3.8, 3.9, 3.10, 3.11, ...).
 for pyver in $TARGET_PYVER; do
     pkgutil --pkgs | grep "PythonFramework-${pyver}" > /dev/null
     if [ $? -ne 0 ]; then
