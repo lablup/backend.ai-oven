@@ -36,5 +36,13 @@
     "grpcio:grpcio-1.49.1-cp310-cp310-macosx_10_10_x86_64.whl": "bd57ad18d2aeced4729ed0f3900b1cfc6f5890ca49a4b20f48ddf80f509f9909",
     "grpcio:grpcio-1.48.1-cp310-cp310-macosx_10_10_x86_64.whl": "87797a7086e36ad7e00f5cd270bfc68ac7cf9aa6403f64b1f7b8791a7583c672",
     "grpcio:grpcio-1.48.2-cp310-cp310-macosx_11_0_arm64.whl": "5b117b3c76bf0f41c061b0008dde0bd279b9a7a733e35784ca22e962e38b4a13",
-    "grpcio:grpcio-1.48.2-cp310-cp310-macosx_10_10_x86_64.whl": "1b8c3aa0f9f6ac44110a982bc21b9b2447fc5419eff2b6e4042357c6c426c3fb"
+    "grpcio:grpcio-1.48.2-cp310-cp310-macosx_10_10_x86_64.whl": "1b8c3aa0f9f6ac44110a982bc21b9b2447fc5419eff2b6e4042357c6c426c3fb",
+    "hiredis:hiredis-1.1.0-cp311-cp311-macosx_13_0_arm64.whl": "96db0f78b2b41dd802319c55ebf9de816410525edc27bf1d4fd228633c8db9b4",
+    "hiredis:hiredis-2.0.0-cp310-cp310-macosx_13_0_arm64.whl": "d4689bdbf2d715d35cc49dc58df5df53d60e1b839864b87c7347a99277c151ae",
+    "hiredis:hiredis-2.0.0-cp311-cp311-macosx_13_0_arm64.whl": "e1a778f3202a5156e1173a52101b942a213df6f8f34a796c955da513e765304d",
+    "psycopg-binary:psycopg_binary-3.1.1-cp311-cp311-macosx_11_0_arm64.whl": "75d1974ce2b8ba972c5003493110e1259094564aff12601836f5e884e9ab2044",
+    "grpcio-tools:grpcio_tools-1.49.1-cp311-cp311-macosx_11_0_arm64.whl": "faa5747c2833efdc10213935809c877b858a771899cd9b88c13484603dbead69",
+    "grpcio-tools:grpcio_tools-1.49.1-cp311-cp311-macosx_10_10_x86_64.whl": "b104c0fb431a52c381d9b6d80329e8123a6b945db239f6745068660759f57eca",
+    "grpcio:grpcio-1.49.1-cp311-cp311-macosx_10_10_x86_64.whl": "05c176b242162c6ce78b5c02ca80671710515aa30ec3a0b74542361f31a5328b",
+    "grpcio:grpcio-1.49.1-cp311-cp311-macosx_11_0_arm64.whl": "a55aa22bdfffcde505987c2fd3a7057863821c6f6826549dbf9082a8236fc6be"
 }
