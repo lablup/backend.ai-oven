@@ -16,9 +16,8 @@ VERSION_TAG=${VERSION_TAG:-3.1.1}
 # https://www.python.org/downloads/
 # inside the /usr/local/bin directory.
 # ref: https://cibuildwheel.readthedocs.io/en/stable/setup/#macos-windows-builds
-PYTHON_VERSION=${PYTHON_VERSION:3.10.8}
+PYTHON_VERSION=${PYTHON_VERSION:-3.10.8}
 VENV_BUILD="tmp-psycopg-binary-build"
-
 mkdir -p "$origpath/${VERSION_TAG}"
 pyenv virtualenv -f ${PYTHON_VERSION} ${VENV_BUILD}
 trap cleanup EXIT
