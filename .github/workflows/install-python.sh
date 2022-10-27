@@ -1,6 +1,6 @@
 #! /bin/bash
 
-target_versions="3.9.15 3.10.8 3.11.0"
+target_versions="3.9.13 3.10.8 3.11.0"
 
 for version in $target_versions; do
     major_minor=$(echo "${version}" | awk -F. '{printf("%s.%s",$1,$2)}')
