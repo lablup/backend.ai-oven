@@ -3,7 +3,7 @@ cleanup() {
     rm -rf "$tmppath"
 }
 
-VERSION=${VERSION:-1.49.1}  # target grpcio version
+VERSION=${VERSION:-1.50.0}  # target grpcio version
 TARGET_PYVER=${TARGET_PYVER:-3.9 3.10 3.11}  # target python version
 TARGET_ARCH=${TARGET_ARCH:-arm64 x86_64}  # target architecture
 
