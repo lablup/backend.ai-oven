@@ -5,7 +5,9 @@ from pathlib import Path
 import sys
 import textwrap
 from typing import Mapping, MutableMapping
+
 from bs4 import BeautifulSoup as BSoup
+import packaging.version
 import requests
 
 REPOSITORY = os.environ['REPOSITORY']
@@ -71,7 +73,9 @@ def main():
         if not project.is_dir():
             continue
         simple_output[project.name] = {}
-        for wheel in project.iterdir():
+        sorted_wheels = sorted(project.glob('*.whl'), key=lambda p: packaging.version.parse(p.name.split('-')[1]))
+        for wheel in sorted_wheels:
+            print('processing', wheel.as_posix())
             if not wheel.is_file() or wheel.name.startswith('.') or not wheel.name.endswith('.whl'):
                 continue
             if _hash := hash_cache.get(f'{project.name}:{wheel.name}'):
@@ -79,7 +83,7 @@ def main():
             else:
                 with open(wheel, 'rb') as fr:
                     hash = hashlib.sha256(fr.read()).hexdigest()
-                hash_cache[f'{project.name}:{wheel.name}'] = hash
+                hash_cache[f'{project.name}:{wheel.name}'] = hash            
             url = get_actual_url(
                 f'https://github.com/{REPOSITORY}/raw/{BRANCH}/pypi/projects'
                 f'/{project.name}/{wheel.name}?raw=true'
