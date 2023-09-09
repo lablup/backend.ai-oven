@@ -57,5 +57,15 @@
     "grpcio:grpcio-1.50.0-cp311-cp311-macosx_10_10_x86_64.whl": "daf2ba1c000cf116de65d21b90e1bbff940bb172797f0d185bfae3eb9fb49da8",
     "grpcio:grpcio-1.50.0-cp310-cp310-macosx_11_0_arm64.whl": "a1f12d6b9e31c72cdc001d942fc9b0db0c451a44ddc99c8c721043ef8d1345d9",
     "grpcio:grpcio-1.50.0-cp39-cp39-macosx_11_0_arm64.whl": "b31dfcd010175715832a339b676ec230c94ba431dbf0184048afc730d3497af6",
-    "pantsbuild-pants:pantsbuild.pants-2.14.0-cp39-cp39-linux_aarch64.whl": "4c941ac79a5c28ead9995e64a7d904ecb8fb2ac4423ddbe1059bd9701e7d0b45"
+    "pantsbuild-pants:pantsbuild.pants-2.14.0-cp39-cp39-linux_aarch64.whl": "4c941ac79a5c28ead9995e64a7d904ecb8fb2ac4423ddbe1059bd9701e7d0b45",
+    "mypy:mypy-1.5.1-cp39-cp39-musllinux_1_1_aarch64.whl": "f7845316baaf2db410119d0826d564e7d5e2ed3475504eb2fde627754cca58f3",
+    "mypy:mypy-1.5.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "5e25ec0646951fba02cee1131537219f76e7922bc640faa6243d709a77363bc4",
+    "mypy:mypy-1.5.1-cp38-cp38-musllinux_1_1_aarch64.whl": "e89c9d50e6b4765dca32b7139c6882dd4b5332e258a2a39b4df791f76f2867eb",
+    "mypy:mypy-1.5.1-cp310-cp310-musllinux_1_1_aarch64.whl": "c62bffde4cb92f4c486fafbb33566370bb6ea94788e1641899d4d89b040fb700",
+    "mypy:mypy-1.5.1-cp311-cp311-musllinux_1_1_aarch64.whl": "c6f83a0a38d0fa68c593997bb62d7c0cc0b5ded5e74a4885b625fb20cf339b07",
+    "mypy:mypy-1.5.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "021326f464fd3da2f37d9727bd2fdce249fce38f91a48badf5f9331f4c7d3e74",
+    "mypy:mypy-1.5.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "09b99847d5af639a85e8ac289b72645aa168764f24a129e5f2b9744edb9cf4c3",
+    "mypy:mypy-1.5.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "d0f5ba853a79f9d18054cc0892bd23244fa3e0c9d95c8bdd6dbff98792143ad6",
+    "mypy:mypy-1.5.1-cp312-cp312-musllinux_1_1_aarch64.whl": "5b59df87fa09405d6cfbda3460f6addb2e7501558569746ea397ffac36e60955",
+    "mypy:mypy-1.5.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "5ad0ba13e79a3f6b16a72f1bc58ad8f901ac1eac2893de790f345d70c15655a7"
 }
