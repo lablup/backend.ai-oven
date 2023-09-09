@@ -11,7 +11,6 @@ Then install some build prerequisites in a venv:
 
 ```console
 $ pip install hatch hatch-vcs hatch-fancy-pypi-readme hatch-mypyc auditwheel
-$ sudo apt-get install -y patchelf
 ```
 
 Check if the version is cleanly recognized:
