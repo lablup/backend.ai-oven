@@ -10,7 +10,7 @@ $ git checkout ${RELEASE_TAG}
 Then install some build prerequisites in a venv:
 
 ```console
-$ pip install hatch hatch-vcs hatch-fancy-pypi-readme hatch-mypyc auditwheel
+$ pip install hatch hatch-vcs hatch-fancy-pypi-readme hatch-mypyc
 ```
 
 Check if the version is cleanly recognized:
