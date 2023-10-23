@@ -81,5 +81,15 @@
     "mypy:mypy-1.6.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "1267b6807a464c0a047d4dd444932229ec29f7538de8d47fff6edb08f20b3d03",
     "mypy:mypy-1.6.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "e1596c7ada07c6eeaeb5ca37e5309f31cb657f32079aeb369c7be4d9929ccffd",
     "mypy:mypy-1.6.0-cp311-cp311-musllinux_1_1_aarch64.whl": "042b40c1d958be32ddce9c7a2e9a36b7aefab1d0f43cc9e8d09d2d06d46707e8",
-    "mypy:mypy-1.6.0-cp39-cp39-musllinux_1_1_aarch64.whl": "1201de731e408fa751e2d66d25f341d5f279c9a5f914a965548bd18bb9b520b1"
+    "mypy:mypy-1.6.0-cp39-cp39-musllinux_1_1_aarch64.whl": "1201de731e408fa751e2d66d25f341d5f279c9a5f914a965548bd18bb9b520b1",
+    "mypy:mypy-1.6.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "41d720a67a16adbea48bdaa1be5d33306fdea709cb1d81d3f66e32e0fc197237",
+    "mypy:mypy-1.6.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "3889c2c689f1cb8bc8887e85d3e6b2456c2df23a825cfb310d6a93357ec65af5",
+    "mypy:mypy-1.6.1-cp310-cp310-musllinux_1_1_aarch64.whl": "e4f93a364d429c92bbbf04605468a92e244f3e5b083a2ec7afa2fb93e7b87de2",
+    "mypy:mypy-1.6.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "358af7583228694d746bd86ada7ad0fb2b97bd8303f79db47d6406fbff32690a",
+    "mypy:mypy-1.6.1-cp311-cp311-musllinux_1_1_aarch64.whl": "b7ee8ad51efbe5ffda8afbe7bd95022b03ee6db5554127bc31daf2b3244824ac",
+    "mypy:mypy-1.6.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "771ad0f33f386a09827a89a96179e84005c2132e7c1619202a755dea69fff235",
+    "mypy:mypy-1.6.1-cp39-cp39-musllinux_1_1_aarch64.whl": "500b9cf827fce3dbd8aafcf2bdfe495c08e1ce4048ac5ffe7dab8e02f05e0950",
+    "mypy:mypy-1.6.1-cp38-cp38-musllinux_1_1_aarch64.whl": "46e2f2d33cb40334fad08e4deca5034418b7d9d9f223e7413b5b3460f689f0af",
+    "mypy:mypy-1.6.1-cp312-cp312-musllinux_1_1_aarch64.whl": "c41158cefb7b99e259fe2652fedeef112bf1eebb24bc5fc901357074548d64b1",
+    "mypy:mypy-1.6.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "f2448a6c870cb64c4ea7ecd13b5fac3cac9290cf1753077f15833efdbfbc8958"
 }
