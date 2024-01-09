@@ -103,5 +103,15 @@
     "mypy:mypy-1.7.1-cp38-cp38-musllinux_1_1_aarch64.whl": "387c0961ff2025a913eccf070a6ea3e647f7b04262ffea0e6fdcd140fd2c8aad",
     "mypy:mypy-1.7.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "639d5ad11684bbecb1213ef2548a5b648b5a5361449b4983c05e0b8c36b3b17e",
     "mypy:mypy-1.7.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "3c3084f90504e6d3d8fbcc8548ea8566aea6500518add507542f0101bf794331",
-    "mypy:mypy-1.7.1-cp311-cp311-musllinux_1_1_aarch64.whl": "d741d733f5d8b8e1c92dcac30359cc6c86916e87fb541a269e60a67bc30d6187"
+    "mypy:mypy-1.7.1-cp311-cp311-musllinux_1_1_aarch64.whl": "d741d733f5d8b8e1c92dcac30359cc6c86916e87fb541a269e60a67bc30d6187",
+    "mypy:mypy-1.8.0-cp311-cp311-musllinux_1_1_aarch64.whl": "a01b7fa85ee54aface4c4a58c91dd1f861b226a07a91480c142806dde21b3edd",
+    "mypy:mypy-1.8.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "a8cd18cfc5d9e5ad505633611c1c55428600b570c62292f811de97b38fd7b016",
+    "mypy:mypy-1.8.0-cp38-cp38-musllinux_1_1_aarch64.whl": "3cf0c6cf309ad4d9ad12f25d6c0ea21eb4b9b5a9e6f01b16b18fc7183256f772",
+    "mypy:mypy-1.8.0-cp39-cp39-musllinux_1_1_aarch64.whl": "bf9a8275084f40989b4114be93680f17a89b5fa7136ad035242a904509df75a1",
+    "mypy:mypy-1.8.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "f81c4a24b0aea30756d4f40556870f7b5a520edf843be3fd0e232b93f6acc795",
+    "mypy:mypy-1.8.0-cp310-cp310-musllinux_1_1_aarch64.whl": "92b4b687d199c4fc347eb9a2c8cae94091c7857b8c3d1e89d5612d45f777e07a",
+    "mypy:mypy-1.8.0-cp312-cp312-musllinux_1_1_aarch64.whl": "3eee4943448f4c2a5bafbe43a73d2a5c819853fd05eed4a99b3cbf1e87ff2aa7",
+    "mypy:mypy-1.8.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "11c5e56a43589672d75d5dfd2694060b7c0e4b17d13efb7a13c0d91a5a357b0b",
+    "mypy:mypy-1.8.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "62cf36c421bb85f7280b4c80cf01cbadf940cc3542b17350a4567042e4c36e77",
+    "mypy:mypy-1.8.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "3284576684509424cf81cb7dbe6d74b0d34fb2b567a325eff5c99abeda2305c6"
 }
