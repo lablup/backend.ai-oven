@@ -113,5 +113,15 @@
     "mypy:mypy-1.8.0-cp312-cp312-musllinux_1_1_aarch64.whl": "3eee4943448f4c2a5bafbe43a73d2a5c819853fd05eed4a99b3cbf1e87ff2aa7",
     "mypy:mypy-1.8.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "11c5e56a43589672d75d5dfd2694060b7c0e4b17d13efb7a13c0d91a5a357b0b",
     "mypy:mypy-1.8.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "62cf36c421bb85f7280b4c80cf01cbadf940cc3542b17350a4567042e4c36e77",
-    "mypy:mypy-1.8.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "3284576684509424cf81cb7dbe6d74b0d34fb2b567a325eff5c99abeda2305c6"
+    "mypy:mypy-1.8.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "3284576684509424cf81cb7dbe6d74b0d34fb2b567a325eff5c99abeda2305c6",
+    "mypy:mypy-1.9.0-cp310-cp310-musllinux_1_1_aarch64.whl": "dff40fcd3e4ee2abe12a9fde4760be375af20d4e1b1ff993c8d263e18bb7ca55",
+    "mypy:mypy-1.9.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "012be56bad0828f60fb1936c79cae3299317131147e49e5bdc9cf419d74a26f0",
+    "mypy:mypy-1.9.0-cp312-cp312-musllinux_1_1_aarch64.whl": "a967325acb4dccac735a44fb242c75eb3742a629413355fdc297ad060b0cc0e9",
+    "mypy:mypy-1.9.0-cp38-cp38-musllinux_1_1_aarch64.whl": "32afdfbd7ea97368e5984f9985864b3e51a1edcb084e7cf140773eaad4e00fb5",
+    "mypy:mypy-1.9.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "7e1b6708cf46e5f058a566f6c7a8bb6d20dd097b9ba713ed68257b0b7a6f42d2",
+    "mypy:mypy-1.9.0-cp39-cp39-musllinux_1_1_aarch64.whl": "93b36db532dc160baab27ddee699fd50fbdbc24f60002adeb62d59d44a644f15",
+    "mypy:mypy-1.9.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "f413968380de04de6f2617259fe0da6acb31c409820bc6de125a079719801925",
+    "mypy:mypy-1.9.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "fdcd6e408b6b847c45519bfb61d1bf3f049e77f29b28f2c9fda5f0def9a8eadb",
+    "mypy:mypy-1.9.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "ebe3446baab646ef698322fb4cf99459d7686ecba99ef5e19bac5c3113dd0e74",
+    "mypy:mypy-1.9.0-cp311-cp311-musllinux_1_1_aarch64.whl": "4e6201e2bed7fb303a0c1eaa9f8989e95e713202e36cc5603781867a5cef25cf"
 }
