@@ -49,6 +49,8 @@ jobs:
           OUTPUT_DIRECTORY: pages-output/pypi
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v4
+        permissions:
+          pages: write
         with:
           repository: pages-output
           commit_message: Generate PyPI index.html
