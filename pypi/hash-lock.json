@@ -128,5 +128,11 @@
     "mypy:mypy-1.10.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "ec2349ead833722dd4a1c516fcaad94d539a901df4e986eee383573576bca0cc",
     "mypy:mypy-1.10.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "595d370b90f9a7af683dae2b759a237a7e202cb31393b80a77ec25fddb5a375e",
     "mypy:mypy-1.10.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "51202c83bda56a3b80f9af7e6488a3b0fa6dc7b8653f755c49e847d83a782285",
-    "mypy:mypy-1.10.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "d44de065601e5443c5be508d52035f2be2660ea7f6e546a8ee89c57319cbd093"
+    "mypy:mypy-1.10.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl": "d44de065601e5443c5be508d52035f2be2660ea7f6e546a8ee89c57319cbd093",
+    "mypy:mypy-1.11.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_28_aarch64.whl": "b580049bf4dbf3637d2d77a1e1054f978a0629ee51d22ef1ceaf10dcc6d72ca8",
+    "mypy:mypy-1.11.1-cp312-cp312-musllinux_1_1_aarch64.whl": "de3349ab7600d4ca60b0579743cbc483aaa8956796b665f1c53281a3fde0849b",
+    "mypy:mypy-1.11.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_28_aarch64.whl": "6cc637cd4bce5f2ca2cc74418918ea3f83969dcb2bd794dfe74a50ee62744165",
+    "mypy:mypy-1.11.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_28_aarch64.whl": "46054ca53833d0d243e31a198291bb1f25288eb4118727d2f5d89b5c6d943144",
+    "mypy:mypy-1.11.1-cp310-cp310-musllinux_1_1_aarch64.whl": "5a5f5fe1e7479e78d99845ae3b51b279d5b8bd019e165bf76aff8f79ddccacb2",
+    "mypy:mypy-1.11.1-cp311-cp311-musllinux_1_1_aarch64.whl": "09197f4df257118342c5d73156c8511a8edb192249b5a8db26d307d9ef7f87e4"
 }
