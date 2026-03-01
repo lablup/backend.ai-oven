@@ -144,5 +144,7 @@
     "mypy:mypy-1.13.0-cp312-cp312-musllinux_1_1_aarch64.whl": "13cbde8f3bbe3a019313cc21ea7174ff5f6c0326ed8a303451b6781e07ce5ecb",
     "mypy:mypy-1.13.0-cp311-cp311-musllinux_1_1_aarch64.whl": "da83d34854adabd813222e66356b9352b39b2e644b068a04e5929a99a2a80ada",
     "fa3-fwd:fa3_fwd-0.0.1-cp39-abi3-linux_aarch64.whl": "39f46d2fb0b5b9eb3ce757404b1f93c4ec6f08895e484d203f7dff2e52011649",
-    "fa3-fwd:fa3_fwd-0.0.1-cp39-abi3-manylinux_2_24_x86_64.whl": "3805f4821dba9a8d1d0d98294c0223a0ccb0e1263101b0b06be5d9a2d54ec0a4"
+    "fa3-fwd:fa3_fwd-0.0.1-cp39-abi3-manylinux_2_24_x86_64.whl": "3805f4821dba9a8d1d0d98294c0223a0ccb0e1263101b0b06be5d9a2d54ec0a4",
+    "fa3-fwd:fa3_fwd-0.0.2-cp39-abi3-linux_aarch64.whl": "7fd35e90b8a3df6b8a1b24faf8e49d5ee9e143eb9002731835d5b5569809fbde",
+    "fa3-fwd:fa3_fwd-0.0.2-cp39-abi3-manylinux_2_24_x86_64.whl": "1fddac2fb32bcb446ebef7359387e863b46323961e53c4975038eebb8b9f2ceb"
 }
